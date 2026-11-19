@@ -1,9 +1,14 @@
-FROM postgis/postgis
+FROM postgis/postgis:13-3.4
 
-RUN apt-get update && apt-get install -y \
-    less \
-    make \
-    vim
+RUN rm /etc/apt/sources.list.d/pgdg.list && \
+    apt-get update && \
+    apt-get install -y \
+        less \
+        make \
+        vim=2:8.2.2434-3+deb11u1 \
+        vim-common=2:8.2.2434-3+deb11u1 \
+        vim-runtime=2:8.2.2434-3+deb11u1 \
+        xxd=2:8.2.2434-3+deb11u1
 
 WORKDIR /tmp/db
 
